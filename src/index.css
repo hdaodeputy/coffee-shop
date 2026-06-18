@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+/* =========================================================================
+   Coffee Shop — Design Tokens (Tailwind v4, CSS-first)
+   Mỗi token sinh ra utility tương ứng:
+     --color-brand -> bg-brand / text-brand / border-brand
+     --text-h1     -> text-h1 (kèm line-height & font-weight)
+     --radius-lg   -> rounded-lg
+     --shadow-card -> shadow-card
+   Tham chiếu: DESIGN-SYSTEM.md
+   ========================================================================= */
+@theme {
+  /* ---- Colors -------------------------------------------------------- */
+  --color-brand: #c67c4e;          /* Brown 01 — CTA chính, active, giá nổi bật */
+  --color-brand-pressed: #a86b43;  /* trạng thái nhấn/hover nút chính */
+  --color-brand-soft: #edd6c8;     /* Tan 02 — nền nhạt: promo, chip, vùng nhấn */
+  --color-ink: #313131;            /* 03 — text chính, tiêu đề, icon đậm */
+  --color-muted: #9b9b9b;          /* text phụ, mô tả, placeholder */
+  --color-line: #e3e3e3;           /* Grey 04 — viền, đường kẻ, nút outline */
+  --color-surface-page: #f9f2ed;   /* 05 — nền trang (kem ấm) */
+  --color-surface-card: #fdfdff;   /* nền card, input, sheet */
+  --color-success: #2eb872;        /* đã giao, progress */
+  --color-warning: #e8a33d;        /* cảnh báo nhẹ */
+  --color-danger: #e5484d;         /* lỗi, xoá, hết hàng */
+
+  /* ---- Typography ---------------------------------------------------- */
+  --font-sans: "Sora", system-ui, -apple-system, sans-serif;
+
+  --text-display: 30px;
+  --text-display--line-height: 38px;
+  --text-display--font-weight: 600;
+
+  --text-h1: 24px;
+  --text-h1--line-height: 32px;
+  --text-h1--font-weight: 600;
+
+  --text-h2: 20px;
+  --text-h2--line-height: 28px;
+  --text-h2--font-weight: 600;
+
+  --text-h3: 16px;
+  --text-h3--line-height: 24px;
+  --text-h3--font-weight: 600;
+
+  --text-body: 14px;
+  --text-body--line-height: 22px;
+  --text-body--font-weight: 400;
+
+  --text-price: 18px;
+  --text-price--line-height: 24px;
+  --text-price--font-weight: 600;
+
+  --text-button: 16px;
+  --text-button--line-height: 16px;
+  --text-button--font-weight: 600;
+
+  --text-caption: 12px;
+  --text-caption--line-height: 16px;
+  --text-caption--font-weight: 400;
+
+  /* ---- Radius -------------------------------------------------------- */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* ---- Shadow -------------------------------------------------------- */
+  --shadow-card: 0 8px 24px rgba(141, 87, 56, 0.08);
+  --shadow-floating: 0 12px 32px rgba(49, 49, 49, 0.12);
+}
+
+/* ---- Base ------------------------------------------------------------ */
+@layer base {
+  body {
+    margin: 0;
+    font-family: var(--font-sans);
+    background-color: var(--color-surface-page);
+    color: var(--color-ink);
+    -webkit-font-smoothing: antialiased;
+  }
+}
