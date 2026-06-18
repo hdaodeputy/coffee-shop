@@ -12,7 +12,11 @@ const LONG_TEXT =
 
 const SHORT_TEXT = 'A quick short description that does not need expanding.'
 
-export function Showcase({ onProductDetail }: { onProductDetail: () => void }) {
+type ShowcaseProps = {
+  onProductDetail: (state: 'loaded' | 'loading' | 'error') => void
+}
+
+export function Showcase({ onProductDetail }: ShowcaseProps) {
   const [size, setSize] = useState<'S' | 'M' | 'L'>('M')
   const [delivery, setDelivery] = useState<'Deliver' | 'Pick Up'>('Deliver')
 
@@ -22,13 +26,36 @@ export function Showcase({ onProductDetail }: { onProductDetail: () => void }) {
         <h1 className="text-h1 text-ink mb-1">Component Showcase</h1>
         <p className="text-body text-muted mb-6">All variants &amp; states</p>
 
-        <button
-          type="button"
-          onClick={onProductDetail}
-          className="w-full min-h-11 rounded-lg bg-brand text-button text-surface-card mb-8 active:bg-brand-pressed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
-        >
-          View Product Detail Screen →
-        </button>
+        {/* TICKET-007: ProductDetail screen — 3 states */}
+        <section className="mb-8">
+          <h2 className="text-h2 text-ink mb-4">ProductDetail Screen (TICKET-007)</h2>
+          <div className="space-y-3">
+            <button
+              type="button"
+              onClick={() => onProductDetail('loaded')}
+              className="w-full min-h-11 rounded-lg bg-brand text-button text-surface-card
+                         active:bg-brand-pressed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            >
+              View — Loaded state
+            </button>
+            <button
+              type="button"
+              onClick={() => onProductDetail('loading')}
+              className="w-full min-h-11 rounded-lg border border-brand text-button text-brand
+                         active:bg-brand-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            >
+              View — Loading (skeleton) state
+            </button>
+            <button
+              type="button"
+              onClick={() => onProductDetail('error')}
+              className="w-full min-h-11 rounded-lg border border-line text-button text-ink
+                         active:bg-line focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand"
+            >
+              View — Error state
+            </button>
+          </div>
+        </section>
 
         {/* TICKET-003: Divider */}
         <section className="mb-8">
@@ -186,7 +213,7 @@ export function Showcase({ onProductDetail }: { onProductDetail: () => void }) {
           </div>
         </section>
 
-        {/* Coffee icon showcase for ProductHero error state */}
+        {/* ProductHero error placeholder */}
         <section className="mb-8">
           <h2 className="text-h2 text-ink mb-4">ProductHero error placeholder</h2>
           <div className="bg-brand-soft rounded-xl flex items-center justify-center py-12">
